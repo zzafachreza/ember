@@ -73,8 +73,44 @@ export default function MenuA2({ navigation }) {
                 <MYList label="Nama Pemohon" value={item.nama} />
                 <MYList label="Kelurahan" value={item.kelurahan} />
                 <MYList label="Petugas Ukur" value={item.petugas_ukur} />
-                <MYList label="Posisi Berkas" value={item.kegiatan} />
-                <MYList label="Keterangan" value={''} />
+                <MYList label="Posisi Berkas" value={item.posisi} />
+                <MYList label="Keterangan" value={item.kererangan} />
+
+                <View style={{
+                    padding: 10
+                }}>
+                    <MyButton title="Atur Posisi Berkas" warna={colors.black} onPress={() => {
+                        Alert.alert(MYAPP, 'Mau dipindah ke posisi mana berkas ini ?', [
+                            {
+                                text: 'TIDAK',
+                            }, {
+                                text: 'PETUGAS UKUR',
+                                onPress: () => {
+
+                                    axios.post(apiURL + 'update_posisi', {
+                                        id: item.id,
+                                        posisi: 'PETUGAS UKUR'
+                                    }).then(res => {
+                                        sendServer();
+                                    })
+
+                                }
+                            }, {
+                                text: 'PETUGAS PEMETAAN',
+                                onPress: () => {
+
+                                    axios.post(apiURL + 'update_posisi', {
+                                        id: item.id,
+                                        posisi: 'PETUGAS PEMETAAN'
+                                    }).then(res => {
+                                        sendServer();
+                                    })
+
+                                }
+                            }
+                        ])
+                    }} />
+                </View>
 
             </View>
         )
@@ -196,10 +232,10 @@ export default function MenuA2({ navigation }) {
                 </View>
 
                 <MyGap jarak={10} />
-                {!loading && <MyButton title="FILTER" onPress={sendServer} />}
+                {!loading && <MyButton title="SEARCH" onPress={sendServer} />}
                 {loading && <ActivityIndicator size="large" color={colors.primary} />}
 
-                <FlatList data={data} renderItem={__renderItem} />
+                {!loading && <FlatList data={data} renderItem={__renderItem} />}
 
             </ScrollView>
         </SafeAreaView>

@@ -10,7 +10,7 @@ import axios from 'axios'
 export default function MenuA3({ navigation }) {
 
     const [data, setData] = useState([]);
-
+    const [open, setOpen] = useState(false);
     const sendServer = () => {
         setLoading(true);
 
@@ -69,16 +69,60 @@ export default function MenuA3({ navigation }) {
             }}>
                 <MYList label="No. Berkas" value={item.nomor_berkas} />
                 <MYList label="Tahun" value={item.tahun} />
-                <MYList label="Tanggal" value={item.tanggal_masuk} />
                 <MYList label="Nama Pemohon" value={item.nama} />
                 <MYList label="Kelurahan" value={item.kelurahan} />
                 <MYList label="Petugas Ukur" value={item.petugas_ukur} />
-                <MYList label="Posisi Berkas" value={item.kegiatan} />
-                <MYList label="Keterangan" value={''} />
+                <MYList label="Posisi Berkas" value={item.posisi} />
+
+                <MYList label="Keterangan" value={item.keterangan} />
+                <MYList label="Status" value={item.status} />
+
+
+
+                <View style={{
+                    padding: 10
+                }}>
+                    <MyButton title="Tindak Lanjut Berkas" warna={colors.success} onPress={() => {
+                        Alert.alert(MYAPP, 'Tindak lanjut berkas ?', [
+                            {
+                                text: 'TUTUP',
+                                onPress: () => {
+
+
+
+                                }
+                            },
+                            {
+                                text: 'TOLAK',
+                                onPress: () => {
+
+                                    setOpen(true);
+                                    setID(item.id)
+
+                                }
+                            }, {
+                                text: 'TERIMA',
+                                onPress: () => {
+
+                                    axios.post(apiURL + 'update_status', {
+                                        id: item.id,
+                                        status: 'TERIMA'
+                                    }).then(res => {
+                                        sendServer();
+                                    })
+
+                                }
+                            }
+                        ])
+                    }} />
+                </View>
 
             </View>
         )
     }
+
+    const [keterangan, setKeterangan] = useState('');
+    const [ID, setID] = useState(0)
 
     const [loading, setLoading] = useState(false);
     useEffect(() => {
@@ -104,7 +148,43 @@ export default function MenuA3({ navigation }) {
             backgroundColor: colors.white,
             padding: 10,
         }}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            {open && <View style={{
+                flex: 1,
+                padding: 20,
+            }}>
+                <MyInput onChangeText={x => setKeterangan(x)} label="Alasan berkas di tolak" iconname='create' placeholder="Masukan alasan kenapa berkas di tolak" />
+                <MyGap jarak={10} />
+                <View style={{
+                    flexDirection: 'row'
+                }}>
+                    <View style={{
+                        flex: 1,
+                        paddingRight: 5
+                    }}>
+                        <MyButton onPress={() => {
+                            setOpen(false)
+
+                        }} title="KEMBALI" warna={colors.danger} />
+                    </View>
+                    <View style={{
+                        flex: 1,
+                        paddingLeft: 5
+                    }}>
+                        <MyButton title="SIMPAN" onPress={() => {
+                            axios.post(apiURL + 'update_status', {
+                                id: ID,
+                                status: 'TOLAK',
+                                keterangan: keterangan
+                            }).then(res => {
+                                console.log(res.data)
+                                sendServer();
+                                setOpen(false)
+                            })
+                        }} warna={colors.success} />
+                    </View>
+                </View>
+            </View>}
+            {!open && <ScrollView showsVerticalScrollIndicator={false}>
 
 
 
@@ -147,7 +227,7 @@ export default function MenuA3({ navigation }) {
 
                 <FlatList data={data} renderItem={__renderItem} />
 
-            </ScrollView>
+            </ScrollView>}
         </SafeAreaView>
 
     )
