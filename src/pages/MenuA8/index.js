@@ -12,7 +12,7 @@ import { TouchableWithoutFeedback } from 'react-native'
 import { TextInput } from 'react-native'
 import { useRef } from 'react'
 
-export default function MenuA3({ navigation, route }) {
+export default function MenuA8({ navigation, route }) {
 
     const POSISI = route.params.judul;
     const dataUtama = [

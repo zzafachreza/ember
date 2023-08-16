@@ -22,6 +22,11 @@ import {
   MenuA3,
   MenuA4,
   MenuA5,
+  MenuA10,
+  MenuA6,
+  MenuA7,
+  MenuA8,
+  MenuA9,
 
 
 
@@ -127,7 +132,7 @@ export default function Router() {
         component={MenuA3}
         options={{
           headerShown: true,
-          title: 'MONITORING BERKAS PETUGAS UKUR',
+          title: 'PETUGAS UKUR',
           headerTitleAlign: 'center',
 
           headerStyle: {
@@ -143,7 +148,7 @@ export default function Router() {
         component={MenuA4}
         options={{
           headerShown: true,
-          title: 'MONITORING BERKAS PETUGAS PEMETAAN',
+          title: 'PETUGAS PEMETAAN',
           headerTitleAlign: 'center',
 
           headerStyle: {
@@ -156,6 +161,81 @@ export default function Router() {
       <Stack.Screen
         name="MenuA5"
         component={MenuA5}
+        options={{
+          headerShown: true,
+          title: 'PETUGAS CETAK',
+          headerTitleAlign: 'center',
+
+          headerStyle: {
+            backgroundColor: colors.secondary,
+            elevation: 0,
+          }
+
+        }}
+      />
+      <Stack.Screen
+        name="MenuA6"
+        component={MenuA6}
+        options={{
+          headerShown: true,
+          title: 'KORSUB PEMETAAN',
+          headerTitleAlign: 'center',
+
+          headerStyle: {
+            backgroundColor: colors.secondary,
+            elevation: 0,
+          }
+
+        }}
+      />
+      <Stack.Screen
+        name="MenuA7"
+        component={MenuA7}
+        options={{
+          headerShown: true,
+          title: 'KORSUB PENGUKURAN',
+          headerTitleAlign: 'center',
+
+          headerStyle: {
+            backgroundColor: colors.secondary,
+            elevation: 0,
+          }
+
+        }}
+      />
+      <Stack.Screen
+        name="MenuA8"
+        component={MenuA8}
+        options={{
+          headerShown: true,
+          title: 'KASI SP',
+          headerTitleAlign: 'center',
+
+          headerStyle: {
+            backgroundColor: colors.secondary,
+            elevation: 0,
+          }
+
+        }}
+      />
+      <Stack.Screen
+        name="MenuA9"
+        component={MenuA9}
+        options={{
+          headerShown: true,
+          title: 'PETUGAS ADMINISTRASI',
+          headerTitleAlign: 'center',
+
+          headerStyle: {
+            backgroundColor: colors.secondary,
+            elevation: 0,
+          }
+
+        }}
+      />
+      <Stack.Screen
+        name="MenuA10"
+        component={MenuA10}
         options={{
           headerShown: true,
           title: 'REWARD (POINT) & PUNISHMEMT',

@@ -74,6 +74,7 @@ export default function MenuA2({ navigation }) {
                 <MYList label="Kelurahan" value={item.kelurahan} />
                 <MYList label="Petugas Ukur" value={item.petugas_ukur} />
                 <MYList label="Posisi Berkas" value={item.posisi} />
+                <MYList label="Status Berkas" value={item.status_berkas} />
                 <MYList label="Keterangan" value={item.kererangan} />
 
                 <View style={{

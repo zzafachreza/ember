@@ -12,7 +12,7 @@ import { TouchableWithoutFeedback } from 'react-native'
 import { TextInput } from 'react-native'
 import { useRef } from 'react'
 
-export default function MenuA3({ navigation, route }) {
+export default function MenuA9({ navigation, route }) {
 
     const POSISI = route.params.judul;
     const dataUtama = [
@@ -107,15 +107,18 @@ export default function MenuA3({ navigation, route }) {
                 <Text style={{
                     flex: 0.5,
                     fontFamily: fonts.secondary[800],
-                    fontSize: 12
+                    fontSize: 12,
+                    color: colors.white,
                 }}>{label}</Text>
                 <Text style={{
                     flex: 0.1,
+                    color: colors.white,
                     fontFamily: fonts.secondary[600],
                     fontSize: 12
                 }}>:</Text>
                 <Text style={{
                     flex: 1,
+                    color: colors.white,
                     fontFamily: fonts.secondary[600],
                     fontSize: 12
                 }}>{value}</Text>
@@ -129,7 +132,7 @@ export default function MenuA3({ navigation, route }) {
                 marginVertical: 10,
                 // borderWidth: 1,
                 borderRadius: 10,
-                backgroundColor: colors.secondary,
+                backgroundColor: colors.success,
                 padding: 10
             }}>
                 <MYList label="No. Berkas" value={item.nomor_berkas} />
@@ -143,7 +146,7 @@ export default function MenuA3({ navigation, route }) {
 
 
 
-                <View style={{
+                {/* <View style={{
                     padding: 10
                 }}>
                     <MyButton title="Tindak Lanjut Berkas" warna={colors.success} onPress={() => {
@@ -154,7 +157,7 @@ export default function MenuA3({ navigation, route }) {
                             id_berkas: item.id
                         })
                     }} />
-                </View>
+                </View> */}
 
             </View>
         )

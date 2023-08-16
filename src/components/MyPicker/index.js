@@ -6,22 +6,26 @@ import { fonts } from '../../utils/fonts';
 
 export default function MyPicker({
   label,
+  nolabel = false,
   iconname,
   onValueChange,
   onChangeText,
   value,
   keyboardType,
+  labelColor = colors.primary,
   secureTextEntry,
   styleInput,
   placeholder,
   label2,
   styleLabel,
+  backgroundInput = colors.zavalabs,
   colorIcon = colors.primary,
   data = [],
 }) {
   return (
     <>
-      <View
+
+      {nolabel && <View
         style={{
           flexDirection: 'row',
           alignItems: 'center',
@@ -31,17 +35,17 @@ export default function MyPicker({
         <Text
           style={{
             fontFamily: fonts.secondary[600],
-            color: colors.primary,
+            color: labelColor,
             left: 10,
             fontSize: 12,
             ...styleLabel,
           }}>
           {label}
         </Text>
-      </View>
+      </View>}
 
       <View style={{
-        backgroundColor: colors.zavalabs,
+        backgroundColor: backgroundInput,
         borderRadius: 10,
         marginTop: 5,
         fontFamily: fonts.secondary[600],

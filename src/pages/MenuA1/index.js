@@ -10,14 +10,14 @@ import axios from 'axios'
 export default function MenuA1({ navigation }) {
 
     const sendServer = () => {
-        // setLoading(true);
+        setLoading(true);
 
         setTimeout(() => {
             console.log(kirim);
             axios.post(apiURL + 'berkas_add', kirim).then(res => {
                 setLoading(false);
                 console.log(res.data);
-                Alert.alert(MYAPP, 'Data berhasil di simpan !')
+                Alert.alert(MYAPP, `No. Berkas ${kirim.nomor_berkas}/${kirim.tahun} berhasil di input !`)
             })
 
         }, 1000)

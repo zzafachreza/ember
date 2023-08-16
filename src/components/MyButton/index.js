@@ -21,7 +21,7 @@ export default function MyButton({
     <TouchableOpacity
       style={styles(warna, radius, borderSize, borderColor).btn}
       onPress={onPress}>
-      {kiri && <Icon type="ionicon" name={Icons} color={iconColor} size={windowWidth / 35} />}
+      {kiri && <Icon type="ionicon" name={Icons} color={iconColor} size={windowWidth / 25} />}
       <Text
         style={{
           color: colorText,
@@ -34,7 +34,7 @@ export default function MyButton({
         }}>
         {title}
       </Text>
-      {!kiri && <Icon type="ionicon" name={Icons} color={iconColor} size={windowWidth / 35} />}
+      {!kiri && <Icon type="ionicon" name={Icons} color={iconColor} size={windowWidth / 25} />}
     </TouchableOpacity>
   );
 }
