@@ -62,18 +62,17 @@ export default function Home({ navigation, route }) {
 
       const unsubscribe = messaging().onMessage(async remoteMessage => {
 
-        const json = JSON.stringify(remoteMessage.data);
-        const obj = JSON.parse(json);
 
-        console.log(obj);
+
+        console.log(remoteMessage.data);
 
         // alert(obj.notification.title)
 
         PushNotification.localNotification({
           /* Android Only Properties */
           channelId: 'ember', // (required) channelId, if the channel doesn't exist, notification will not trigger.
-          title: obj.title, // (optional)
-          message: obj.message, // (required)
+          title: remoteMessage.data.title, // (optional)
+          message: remoteMessage.data.message, // (required)
         });
       });
 
