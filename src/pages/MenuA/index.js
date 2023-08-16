@@ -55,9 +55,14 @@ export default function MenuA({ navigation, route }) {
             halaman: 'MenuA9',
         },
         {
-            judul: 'REWARD (POINT) & PUNISHMENT',
+            judul: 'PETUGAS SURAT',
             image: require('../../assets/p10.png'),
             halaman: 'MenuA10',
+        },
+        {
+            judul: 'REWARD (POINT) & PUNISHMENT',
+            image: require('../../assets/p11.png'),
+            halaman: 'MenuA11',
         },
 
     ]

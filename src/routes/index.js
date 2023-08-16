@@ -27,6 +27,7 @@ import {
   MenuA7,
   MenuA8,
   MenuA9,
+  MenuA11,
 
 
 
@@ -236,6 +237,21 @@ export default function Router() {
       <Stack.Screen
         name="MenuA10"
         component={MenuA10}
+        options={{
+          headerShown: true,
+          title: 'PETUGAS SURAT',
+          headerTitleAlign: 'center',
+
+          headerStyle: {
+            backgroundColor: colors.secondary,
+            elevation: 0,
+          }
+
+        }}
+      />
+      <Stack.Screen
+        name="MenuA11"
+        component={MenuA11}
         options={{
           headerShown: true,
           title: 'REWARD (POINT) & PUNISHMEMT',

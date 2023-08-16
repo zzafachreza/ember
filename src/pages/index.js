@@ -16,6 +16,7 @@ import MenuA7 from './MenuA7';
 import MenuA8 from './MenuA8';
 import MenuA9 from './MenuA9';
 import MenuA10 from './MenuA10';
+import MenuA11 from './MenuA11';
 
 
 
@@ -38,7 +39,8 @@ export {
   MenuA7,
   MenuA8,
   MenuA9,
-  MenuA10
+  MenuA10,
+  MenuA11
 
 
 };

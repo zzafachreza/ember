@@ -25,7 +25,7 @@ export default function MyPicker({
   return (
     <>
 
-      {nolabel && <View
+      {!nolabel && <View
         style={{
           flexDirection: 'row',
           alignItems: 'center',
@@ -47,7 +47,7 @@ export default function MyPicker({
       <View style={{
         backgroundColor: backgroundInput,
         borderRadius: 10,
-        marginTop: 5,
+        marginTop: !nolabel ? 5 : 15,
         fontFamily: fonts.secondary[600],
         borderColor: colors.primary,
       }}>

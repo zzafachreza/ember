@@ -41,6 +41,10 @@ export default function MenuA3({ navigation, route }) {
             value: 'KASI SP'
         },
         {
+            label: 'PETUGAS SURAT',
+            value: 'PETUGAS SURAT'
+        },
+        {
             label: 'PETUGAS ADMINISTRASI',
             value: 'PETUGAS ADMINISTRASI'
         },

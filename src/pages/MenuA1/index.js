@@ -69,7 +69,7 @@ export default function MenuA1({ navigation }) {
                         flex: 1,
                         paddingLeft: 5,
                     }}>
-                        <MyInput label="Tahun" iconname="analytics" value={kirim.tahun} onChangeText={x => setKirim({ ...kirim, tahun: x })} />
+                        <MyInput label="Tahun" keyboardType='number-pad' iconname="analytics" value={kirim.tahun} onChangeText={x => setKirim({ ...kirim, tahun: x })} />
                     </View>
                 </View>
                 <MyGap jarak={10} />
