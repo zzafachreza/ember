@@ -28,13 +28,13 @@ export default function MenuA11({ navigation, route }) {
 
                 __getTransaction()
 
-                console.log(remoteMessage.data);
+                console.log(remoteMessage);
 
                 // alert(obj.notification.title)
 
                 PushNotification.localNotification({
                     /* Android Only Properties */
-                    channelId: 'ember', // (required) channelId, if the channel doesn't exist, notification will not trigger.
+                    channelId: 'emberAPK', // (required) channelId, if the channel doesn't exist, notification will not trigger.
                     title: remoteMessage.data.title, // (optional)
                     message: remoteMessage.data.message, // (required)
                 });
@@ -97,7 +97,7 @@ export default function MenuA11({ navigation, route }) {
                         fontFamily: fonts.secondary[600],
                         fontSize: 12,
                         color: colors.primary
-                    }}>{moment(item.tanggal_masuk).format('dddd, DD MMMM YYYY')} ( {moment(item.tanggal_masuk).fromNow()} )</Text>
+                    }}>{moment(item.tanggal_masuk).format('dddd, DD MMMM YYYY')} ( {Math.abs(moment(item.tanggal_masuk).diff(moment(), 'days'))} hari yang lalu )</Text>
                     <Text style={{
                         marginTop: 5,
                         fontFamily: fonts.secondary[600],
@@ -114,11 +114,11 @@ export default function MenuA11({ navigation, route }) {
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
-                    <Text style={{
+                    {/* <Text style={{
                         fontFamily: fonts.secondary[800],
                         fontSize: 25,
                         color: colors.black
-                    }}>{item.point}</Text>
+                    }}>{item.point}</Text> */}
                     <Text style={{
                         fontFamily: fonts.secondary[600],
                         fontSize: 8,

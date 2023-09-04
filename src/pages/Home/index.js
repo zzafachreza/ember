@@ -70,7 +70,7 @@ export default function Home({ navigation, route }) {
 
         PushNotification.localNotification({
           /* Android Only Properties */
-          channelId: 'ember', // (required) channelId, if the channel doesn't exist, notification will not trigger.
+          channelId: 'emberAPK', // (required) channelId, if the channel doesn't exist, notification will not trigger.
           title: remoteMessage.data.title, // (optional)
           message: remoteMessage.data.message, // (required)
         });

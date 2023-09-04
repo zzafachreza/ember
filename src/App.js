@@ -14,8 +14,8 @@ export default function App() {
 
   PushNotification.createChannel(
     {
-      channelId: 'ember', // (required)
-      channelName: 'ember', // (required)
+      channelId: 'emberAPK', // (required)
+      channelName: 'emberAPK', // (required)
       channelDescription: 'A channel to categorise your notifications', // (optional) default: undefined.
       playSound: true, // (optional) default: true
       soundName: 'default', // (optional) See `soundName` parameter of `localNotification` function

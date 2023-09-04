@@ -105,8 +105,7 @@ export default function Register({ navigation }) {
                         })
                     } else {
                         console.log(res.data.data);
-                        storeData('user', res.data.data);
-                        navigation.replace('Home')
+                        navigation.replace('Login')
                         // Alert.alert(MYAPP, res.data.message);
                         // navigation.goBack();
                     }

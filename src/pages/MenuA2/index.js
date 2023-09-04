@@ -131,8 +131,8 @@ export default function MenuA2({ navigation }) {
         nama: '',
         nomor_berkas: '',
         tahun: '',
-        petugas_ukur: 'WAHID NUR KOLIS',
-        kegiatan: 'PENGUKURAN DAN PEMETAAN KADASTRAL'
+        petugas_ukur: '',
+        kegiatan: ''
     })
 
     return (
@@ -176,7 +176,10 @@ export default function MenuA2({ navigation }) {
                     }} >
                         <MyPicker label="Petugas Ukur" data={
                             [
-
+                                {
+                                    label: '',
+                                    value: ''
+                                },
                                 {
                                     label: 'WAHID NUR KHOLIS',
                                     value: 'WAHID NUR KHOLIS'
@@ -203,8 +206,10 @@ export default function MenuA2({ navigation }) {
                     }}>
                         <MyPicker label="Kegiatan" value={kirim.kegiatan} onValueChange={x => setKirim({ ...kirim, kegiatan: x })} data={
                             [
-
-
+                                {
+                                    label: '',
+                                    value: ''
+                                },
                                 {
                                     label: 'PENGUKURAN DAN PEMETAAN KADASTRAL',
                                     value: 'PENGUKURAN DAN PEMETAAN KADASTRAL'
