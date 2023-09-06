@@ -9,6 +9,7 @@ import axios from 'axios'
 
 export default function MenuA1({ navigation }) {
 
+
     const sendServer = () => {
         setLoading(true);
 
@@ -26,12 +27,25 @@ export default function MenuA1({ navigation }) {
     }
 
     const [loading, setLoading] = useState(false);
+
+
+    const [petugas, setPetugas] = useState([])
     useEffect(() => {
+
+
+
         getData('user').then(u => {
-            setKirim({
-                ...kirim,
-                fid_user: u.id
+
+            axios.post(apiURL + 'petugas').then(res => {
+                console.log(res.data);
+                setPetugas(res.data);
+                setKirim({
+                    ...kirim,
+                    fid_user: u.id,
+                    petugas_ukur: res.data[0].value
+                })
             })
+
         })
     }, [])
 
@@ -79,28 +93,7 @@ export default function MenuA1({ navigation }) {
                 <MyGap jarak={5} />
                 <MyInput label="Kecamatan" iconname="location" value={kirim.kecamatan} onChangeText={x => setKirim({ ...kirim, kecamatan: x })} />
                 <MyGap jarak={5} />
-                <MyPicker label="Petugas Ukur" data={
-                    [
-
-                        {
-                            label: 'WAHID NUR KHOLIS',
-                            value: 'WAHID NUR KHOLIS'
-                        },
-                        {
-                            label: 'RANGGA ADITYA',
-                            value: 'RANGGA ADITYA'
-                        },
-                        {
-                            label: 'ERMAWANTO',
-                            value: 'ERMAWANTO'
-                        },
-                        {
-                            label: 'MERANDRA',
-                            value: 'MERANDRA'
-                        },
-
-                    ]
-                } iconname="people" value={kirim.petugas_ukur} onValueChange={x => setKirim({ ...kirim, petugas_ukur: x })} />
+                <MyPicker label="Petugas Ukur" data={petugas} iconname="people" value={kirim.petugas_ukur} onValueChange={x => setKirim({ ...kirim, petugas_ukur: x })} />
                 <MyGap jarak={5} />
                 <MyPicker label="Kegiatan" value={kirim.kegiatan} onValueChange={x => setKirim({ ...kirim, kegiatan: x })} data={
                     [

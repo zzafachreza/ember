@@ -118,12 +118,20 @@ export default function MenuA2({ navigation }) {
     }
 
     const [loading, setLoading] = useState(false);
+    const [petugas, setPetugas] = useState([])
     useEffect(() => {
         getData('user').then(u => {
-            setKirim({
-                ...kirim,
-                fid_user: u.id
+
+            axios.post(apiURL + 'petugas').then(res => {
+                console.log(res.data);
+                setPetugas(res.data);
+                setKirim({
+                    ...kirim,
+                    fid_user: u.id,
+
+                })
             })
+
         })
     }, [])
 
@@ -174,31 +182,7 @@ export default function MenuA2({ navigation }) {
                         flex: 1,
                         paddingRight: 5,
                     }} >
-                        <MyPicker label="Petugas Ukur" data={
-                            [
-                                {
-                                    label: '',
-                                    value: ''
-                                },
-                                {
-                                    label: 'WAHID NUR KHOLIS',
-                                    value: 'WAHID NUR KHOLIS'
-                                },
-                                {
-                                    label: 'RANGGA ADITYA',
-                                    value: 'RANGGA ADITYA'
-                                },
-                                {
-                                    label: 'ERMAWANTO',
-                                    value: 'ERMAWANTO'
-                                },
-                                {
-                                    label: 'MERANDRA',
-                                    value: 'MERANDRA'
-                                },
-
-                            ]
-                        } iconname="people" value={kirim.petugas_ukur} onValueChange={x => setKirim({ ...kirim, petugas_ukur: x })} />
+                        <MyPicker label="Petugas Ukur" data={petugas} iconname="people" value={kirim.petugas_ukur} onValueChange={x => setKirim({ ...kirim, petugas_ukur: x })} />
                     </View>
                     <View style={{
                         flex: 1,
