@@ -173,12 +173,28 @@ export default function MenuA9({ navigation, route }) {
     const inputRef = useRef()
 
     const [loading, setLoading] = useState(false);
+    const [petugas, setPetugas] = useState([
+        {
+            label: 'SEMUA',
+            value: 'SEMUA'
+        }
+    ])
     useEffect(() => {
+
+
+
         getData('user').then(u => {
-            setKirim({
-                ...kirim,
-                fid_user: u.id
+
+            axios.post(apiURL + 'petugas').then(res => {
+                console.log(res.data);
+                setPetugas(petugas => [...petugas, ...res.data]);
+                setKirim({
+                    ...kirim,
+                    fid_user: u.id,
+                    petugas_ukur: 'SEMUA'
+                })
             })
+
         })
     }, [])
 
@@ -209,31 +225,7 @@ export default function MenuA9({ navigation, route }) {
                     <View style={{
                         flex: 1,
                     }} >
-                        <MyPicker label="Petugas Ukur" data={
-                            [
-                                {
-                                    label: 'SEMUA',
-                                    value: 'SEMUA'
-                                },
-                                {
-                                    label: 'WAHID NUR KHOLIS',
-                                    value: 'WAHID NUR KHOLIS'
-                                },
-                                {
-                                    label: 'RANGGA ADITYA',
-                                    value: 'RANGGA ADITYA'
-                                },
-                                {
-                                    label: 'ERMAWANTO',
-                                    value: 'ERMAWANTO'
-                                },
-                                {
-                                    label: 'MERANDRA',
-                                    value: 'MERANDRA'
-                                },
-
-                            ]
-                        } iconname="people" value={kirim.petugas_ukur} onValueChange={x => setKirim({ ...kirim, petugas_ukur: x })} />
+                        <MyPicker label="Petugas Ukur" data={petugas} iconname="people" value={kirim.petugas_ukur} onValueChange={x => setKirim({ ...kirim, petugas_ukur: x })} />
                     </View>
 
                 </View>
